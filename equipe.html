@@ -1,0 +1,664 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Equipe | Agência Agora</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/x-icon" href="fivicon.png">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <style>
+        /* Variáveis Globais (Seu arquivo style.css principal deve ter estas) */
+        :root {
+            --roxo-principal: #5e0094;
+            /* Exemplo de cor principal */
+            --laranja-destaque: #ff6a00;
+            /* Exemplo de cor de destaque */
+            --branco: #ffffff;
+            --cinza-claro: #f7f7f7;
+            --cinza-texto: #f0f0f0;
+            --header-altura: 80px;
+            /* A variável --card-gap foi removida */
+        }
+
+        /* Estilos Base Comuns (Garantindo a coesão visual) */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+            background-color: var(--branco);
+            /* Fundo branco padrão */
+            color: #333;
+            /* Cor de texto escura padrão para leitura */
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        a {
+            text-decoration: none;
+            color: var(--roxo-principal);
+        }
+
+        .section {
+            padding: 80px 0;
+        }
+
+        .section-title {
+            font-size: 2.5em;
+            text-align: center;
+            color: var(--roxo-principal);
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+
+        .headli {
+            font-size: 3em;
+            font-weight: 700;
+        }
+
+        .btn-cta {
+            display: inline-block;
+            padding: 12px 25px;
+            border-radius: 50px;
+            font-weight: 600;
+            text-transform: uppercase;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+
+        .btn-cta.primary {
+            background-color: var(--laranja-destaque);
+            color: var(--branco);
+            border: none;
+        }
+
+        .btn-cta.primary:hover {
+            background-color: #5e0094;
+            transform: translateY(-2px);
+        }
+
+        /* Mobile Menu Toggle */
+        .menu-toggle {
+            background: none;
+            border: none;
+            color: var(--branco);
+            font-size: 1.5em;
+            cursor: pointer;
+            display: none;
+        }
+
+        /* Estilo da Página Header (Fica mais escuro para destaque) */
+        .page-header {
+            padding: 80px 0;
+            background-color: #5e0094;
+            color: var(--branco);
+        }
+
+        .page-header p {
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+
+        /* ======================================================= */
+        /* ESTILOS EXCLUSIVOS: PÁGINA EQUIPE (Cards e Valores) */
+        /* ======================================================= */
+
+        /* 1. Valores do Time */
+        .team-values-bar {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            padding: 30px 20px;
+            margin-bottom: 50px;
+            background-color: var(--cinza-claro);
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+            border-left: 5px solid var(--laranja-destaque);
+        }
+
+        .team-values-bar .value-item {
+            text-align: center;
+            color: var(--roxo-principal);
+            padding: 0 15px;
+        }
+
+        .team-values-bar .value-item i {
+            font-size: 2.5em;
+            color: var(--laranja-destaque);
+            margin-bottom: 5px;
+        }
+
+        .team-values-bar .value-item h4 {
+            font-weight: 600;
+            margin: 0;
+            font-size: 1.1em;
+        }
+
+        /* 2. Grid (Cards de Membros) */
+        .team-grid-new {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            padding: 20px 0;
+        }
+
+        /* Estilos do Card de Perfil */
+        .member-profile-card {
+            background: var(--branco);
+            border: 1px solid #ddd;
+            border-radius: 12px;
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        .member-profile-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        .photo-container {
+            width: 100%;
+            height: 400px;
+            overflow: hidden;
+        }
+
+        .member-profile-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .member-profile-card:hover img {
+            transform: scale(1.05);
+        }
+
+        .member-content {
+            padding: 25px;
+        }
+
+        .member-content h3 {
+            color: var(--roxo-principal);
+            margin: 0 0 5px 0;
+            font-size: 1.5em;
+        }
+
+        .member-role {
+            display: block;
+            color: var(--laranja-destaque);
+            font-weight: 600;
+            margin-bottom: 10px;
+            font-size: 0.9em;
+            text-transform: uppercase;
+        }
+
+        .member-bio {
+            color: #555;
+            font-size: 0.95em;
+            margin-bottom: 20px;
+        }
+
+        .btn-contact-member {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: var(--roxo-principal);
+            color: var(--branco);
+            text-decoration: none;
+            border-radius: 50px;
+            font-size: 0.9em;
+            font-weight: 600;
+            transition: background-color 0.3s;
+        }
+
+        .btn-contact-member:hover {
+            background-color: var(--laranja-destaque);
+        }
+
+        .btn-contact-member i {
+            margin-right: 5px;
+        }
+
+        /* 3. CTA Pós-Equipe */
+        .cta-team-post {
+            text-align: center;
+            background-color: var(--roxo-principal);
+            padding: 80px 20px;
+            margin-top: 50px;
+        }
+
+        .cta-team-post .section-title {
+            color: var(--branco);
+            margin-bottom: 20px;
+        }
+
+
+        /* ======================================================= */
+        /* ESTILOS: SEÇÕES HISTÓRIA E LOCALIZAÇÃO */
+        /* ======================================================= */
+
+        /* 5.1. Seção História (Galeria de Fotos 50/50 corrigida) */
+        .historia-agencia {
+            background-color: var(--branco);
+        }
+
+        .historia-content-wrapper {
+            display: flex;
+            gap: 40px;
+            align-items: center;
+            margin-top: 40px;
+        }
+
+        .historia-text {
+            flex: 1;
+            /* 50% para o texto */
+            color: #444;
+            font-size: 1.05em;
+            line-height: 1.8;
+        }
+
+        .historia-text p {
+            margin-bottom: 20px;
+        }
+
+        .historia-text strong {
+            color: var(--roxo-principal);
+        }
+
+        .historia-gallery {
+            flex: 1;
+            /* 50% para a galeria */
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            /* Duas colunas (lado a lado) no desktop */
+            gap: 15px;
+        }
+
+        .historia-gallery img {
+            width: 100%;
+            height: 250px;
+            /* Altura fixa para visual simétrico */
+            object-fit: cover;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        /* 5.2. Seção Localização */
+        .localizacao-mapa {
+            background-color: var(--cinza-claro);
+        }
+
+        .localizacao-content-wrapper {
+            display: flex;
+            gap: 40px;
+            margin-top: 40px;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .contact-info-map {
+            flex: 1;
+            padding: 40px;
+            background-color: var(--branco);
+            color: #444;
+        }
+
+        .contact-info-map p {
+            margin-bottom: 15px;
+            font-size: 1.1em;
+        }
+
+        .contact-info-map p i {
+            color: var(--laranja-destaque);
+            margin-right: 10px;
+        }
+
+        .contact-info-map strong {
+            color: var(--roxo-principal);
+        }
+
+        .mapa-embed-sidebar {
+            flex: 1;
+            height: 400px;
+        }
+
+        .mapa-embed-sidebar iframe {
+            display: block;
+            border-radius: 0;
+        }
+
+
+        /* Media Queries para Responsividade */
+        @media (max-width: 992px) {
+
+            /* Altera o layout para 1 coluna na História e Localização em telas médias */
+            .historia-content-wrapper,
+            .localizacao-content-wrapper {
+                flex-direction: column;
+                gap: 30px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .menu-toggle {
+                display: block;
+            }
+
+            .nav {
+                position: absolute;
+                top: var(--header-altura);
+                left: 0;
+                width: 100%;
+                background-color: #820B99;
+                display: none;
+                transition: all 0.3s ease-in-out;
+            }
+
+            .nav.open {
+                display: block;
+            }
+
+            .nav ul {
+                flex-direction: column;
+                text-align: center;
+                padding: 10px 0;
+            }
+
+            .nav ul li a {
+                padding: 15px;
+                border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            }
+
+            .nav ul li:last-child {
+                padding: 15px 0;
+            }
+
+            .btn-cta-nav {
+                margin: 10px auto;
+                width: 80%;
+                display: block;
+                text-align: center;
+            }
+
+
+            .team-values-bar {
+                flex-direction: column;
+                gap: 20px;
+            }
+
+            /* No mobile, o grid se torna uma coluna */
+            .team-grid-new {
+                grid-template-columns: 1fr;
+            }
+
+            /* Responsividade para História e Localização */
+            .historia-content-wrapper {
+                flex-direction: column;
+            }
+
+            .historia-text {
+                order: 2;
+                flex: auto;
+            }
+
+            .historia-gallery {
+                order: 1;
+                width: 100%;
+                grid-template-columns: 1fr;
+                /* Coloca as imagens em coluna no mobile */
+            }
+
+            .historia-gallery img {
+                height: 200px;
+                /* Reduz a altura da imagem no mobile */
+            }
+
+            .localizacao-content-wrapper {
+                flex-direction: column;
+            }
+
+            .mapa-embed-sidebar {
+                width: 100%;
+                height: 300px;
+            }
+
+            .contact-info-map {
+                padding: 30px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <img src="AGENCIA AGORA_LOGO_001.png" alt="Agência Agora Logo">
+            </div>
+            <nav class="nav" id="main-nav">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="servicos.html">Serviços</a></li>
+                    <li><a href="portfolio.html">Portfólio</a></li>
+                    <li><a href="comunidade.html">Comunidade</a></li>
+                    <li><a href="equipe.html" class="active">Equipe</a></li>
+                    <li><a href="https://api.whatsapp.com/send?phone= (86) 98152-4100" class="btn-cta-nav">Contato</a></li>
+                </ul>
+            </nav>
+            <button class="menu-toggle" id="menu-toggle">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </header>
+
+    <section class="section page-header">
+        <div class="container">
+            <h1 class="headli" style="color: var(--branco); text-align: center; margin-bottom: 10px;">
+                Conheça Nossos Especialistas
+            </h1>
+            <p style="text-align: center; font-size: 1.2em; max-width: 700px; margin: 0 auto;">
+                Profissionais de elite dedicados a transformar sua visão em resultados mensuráveis.
+            </p>
+        </div>
+    </section>
+
+    <section id="equipe-detalhe" class="section team-detail-section">
+        <div class="container">
+            <div class="team-values-bar">
+                <div class="value-item">
+                    <i class="fas fa-bullseye"></i>
+                    <h4>Foco em Performance</h4>
+                </div>
+                <div class="value-item">
+                    <i class="fas fa-atom"></i>
+                    <h4>Inovação Constante</h4>
+                </div>
+                <div class="value-item">
+                    <i class="fas fa-shield-alt"></i>
+                    <h4>Transparência</h4>
+                </div>
+            </div>
+
+            <div class="team-grid-new">
+
+                <div class="member-profile-card">
+                    <div class="photo-container">
+                        <img src="pessoa1.png" alt="Foto do CEO">
+                    </div>
+                    <div class="member-content">
+                        <h3>Alexandre Costa</h3>
+                        <p class="member-role">CEO & Estrategista Principal</p>
+                        <p class="member-bio">Líder visionário e especialista em growth hacking. Define a direção
+                            estratégica e garante o ROI máximo para os clientes.</p>
+                        <a href="https://linkedin.com/in/alexandrecosta" target="_blank" class="btn-contact-member"><i
+                                class="fab fa-linkedin-in"></i> Conectar</a>
+                    </div>
+                </div>
+
+                <div class="member-profile-card">
+                    <div class="photo-container">
+                        <img src="pessoa2.png" alt="Nome da Designer">
+                    </div>
+                    <div class="member-content">
+                        <h3>Beatriz Souza</h3>
+                        <p class="member-role">Designer Chefe & Branding</p>
+                        <p class="member-bio">Responsável por criar identidades visuais memoráveis e experiências de
+                            usuário que convertem.</p>
+                        <a href="https://linkedin.com/in/beatrizsouza" target="_blank" class="btn-contact-member"><i
+                                class="fab fa-linkedin-in"></i> Conectar</a>
+                    </div>
+                </div>
+
+                <div class="member-profile-card">
+                    <div class="photo-container">
+                        <img src="pessoa3.png" alt="Nome do Desenvolvedor">
+                    </div>
+                    <div class="member-content">
+                        <h3>Carlos Eduardo</h3>
+                        <p class="member-role">Desenvolvedor Full-Stack</p>
+                        <p class="member-bio">Garante a performance e segurança das plataformas digitais, com foco em
+                            velocidade e otimização.</p>
+                        <a href="https://linkedin.com/in/carloseduardo" target="_blank" class="btn-contact-member"><i
+                                class="fab fa-linkedin-in"></i> Conectar</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section cta-team-post">
+        <div class="container">
+            <h2 class="section-title">Pronto para ter este time no seu projeto?</h2>
+            <a href="https://api.whatsapp.com/send?phone= (86) 98152-4100" class="btn-cta primary">Fale com um de Nossos Líderes</a>
+        </div>
+    </section>
+
+    <section id="historia-agencia" class="section historia-agencia">
+        <div class="container">
+            <h2 class="section-title">Nossa Jornada: Construindo cases de sucesso</h2>
+            <div class="historia-content-wrapper">
+                <div class="historia-text">
+                    <p>A <strong>Agência Agora</strong> nasceu em Parnaíba-Pi da visão de seus fundadores de preencher
+                        uma lacuna no mercado: a necessidade de um marketing digital que fosse
+                        <strong>estratégico</strong>, <strong>transparente</strong> e, acima de tudo, <strong>focado em
+                            resultados reais</strong>. Desde o primeiro projeto, nosso objetivo foi claro: não apenas
+                        criar campanhas bonitas, mas sim gerar crescimento tangível e sustentável para nossos clientes.
+                    </p>
+                    <p>Ao longo dos anos, evoluímos de uma equipe pequena e focada para um time multidisciplinar de
+                        especialistas em <strong>Branding, Desenvolvimento Web e Performance Digital</strong>. Cada
+                        membro da nossa equipe compartilha o mesmo compromisso com a excelência, inovação constante e o
+                        sucesso de longo prazo de cada parceiro de negócios que atendemos.</p>
+                    <p>Hoje, continuamos a honrar nossas origens, mantendo a agilidade de uma startup com a experiência
+                        e o profissionalismo de uma grande agência. Conecte-se conosco e faça parte da nossa história de
+                        sucesso!</p>
+                </div>
+                <div class="historia-gallery">
+                    <img src="agora1.jpg" alt="Foto da equipe ou da sede 1">
+                    <img src="agora2.jpg" alt="Foto da equipe ou da sede 2">
+                    <img src="agora3.jpg" alt="Foto da equipe ou da sede 3">
+                    <img src="agora4.jpg" alt="Foto da equipe ou da sede 4">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="localizacao" class="section localizacao-mapa">
+        <div class="container" style="padding: 80px 0 40px 0;">
+            <h2 class="section-title">Onde Nos Encontrar</h2>
+
+            <div class="localizacao-content-wrapper">
+
+                <div class="contact-info-map">
+                    <p style="margin-bottom: 30px;">
+                        Venha nos visitar em nossa sede em <strong>Parnaíba-Pi</strong> ou entre em contato.
+                    </p>
+                    <p><i class="fas fa-map-marker-alt"></i>
+                        <strong>Endereço:</strong> Rua Dos Araujos, 157 - Parnaíba-Pi
+                    </p>
+                    <p><i class="fas fa-phone"></i>
+                        <strong>Telefone:</strong> (86) 98152-4100
+                    </p>
+                    <p><i class="fas fa-envelope"></i>
+                        <strong>Email:</strong> agenciagoraphb@gmail.com
+                    </p>
+                </div>
+
+                <div class="mapa-embed-sidebar">
+                    <iframe
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3946.5414214571994!2d-41.77661558521503!3d-2.9038257979207015!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x7f83a417614e8fd%3A0x633a258a4369e4f1!2sR.%20dos%20Ara%C3%BAjos%2C%20157%20-%20S%C3%A3o%20Francisco%2C%20Parna%C3%ADba%20-%20PI%2C%2064215-320!5e0!3m2!1spt-BR!2sbr!4v1700685600000!5m2!1spt-BR!2sbr"
+                        width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"
+                        referrerpolicy="no-referrer-when-downgrade"
+                        aria-label="Localização da Agência Agora na Rua Dos Araujos, 157, Parnaíba-Pi">
+                    </iframe>
+                </div>
+            </div>
+        </div>
+
+    </section>
+
+    <footer class="footer">
+        <div class="containerserv">
+            <p>&copy; 2025 Agência Agora. Todos os direitos reservados. | Privacidade</p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const menuToggle = document.getElementById('menu-toggle');
+            const nav = document.getElementById('main-nav');
+
+            // 1. FUNCIONALIDADE DO MENU MOBILE (Hamburger)
+            if (menuToggle && nav) {
+                menuToggle.addEventListener('click', () => {
+                    nav.classList.toggle('open');
+
+                    // Troca o ícone (Hamburger <-> X)
+                    const icon = menuToggle.querySelector('i');
+                    if (nav.classList.contains('open')) {
+                        icon.classList.remove('fa-bars');
+                        icon.classList.add('fa-times');
+                    } else {
+                        icon.classList.remove('fa-times');
+                        icon.classList.add('fa-bars');
+                    }
+                });
+
+                // 2. SCROLL SUAVE PARA ÂNCORAS
+                document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                    anchor.addEventListener('click', function (e) {
+                        e.preventDefault();
+                        const targetElement = document.querySelector(this.getAttribute('href'));
+                        if (targetElement) {
+                            targetElement.scrollIntoView({
+                                behavior: 'smooth'
+                            });
+
+                            // Fecha o menu depois de clicar em um link (apenas em mobile)
+                            if (window.innerWidth <= 768 && nav.classList.contains('open')) {
+                                nav.classList.remove('open');
+                                menuToggle.querySelector('i').classList.remove('fa-times');
+                                menuToggle.querySelector('i').classList.add('fa-bars');
+                            }
+                        }
+                    });
+                });
+            }
+        });
+    </script>
+</body>
+
+</html>

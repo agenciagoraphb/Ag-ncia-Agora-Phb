@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Comunidade | Agência Agora</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/x-icon" href="fivicon.png">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    
+    <style>
+        /* [INCLUA TODO O BLOCO DE ESTILOS DA SEÇÃO 1 ACIMA AQUI] */
+        :root {
+            /* Variáveis de exemplo, assumindo que você as tem em style.css */
+            --laranja-destaque: #ff6a00; 
+            --roxo-principal: #5e0094; 
+            --branco: #ffffff;
+            --cinza-claro: #f0f0f0; /* Valor de cinza claro mantido */
+        }
+
+        /* Ajuste no Nav para o novo nome/arquivo */
+        .nav ul li a[href="comunidade.html"] { color: var(--laranja-destaque); } 
+
+        /* === ESTILIZAÇÃO DOS BOTÕES (Animação Adicionada Aqui) === */
+        /* Estilo padrão para o botão CTA na navegação e na seção CTA */
+        .btn-cta-nav {
+            /* Certifique-se de que a transição está aqui para a animação suave */
+            transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease; 
+        }
+
+        /* Efeito ao passar o mouse (Hover) */
+        .btn-cta-nav:hover {
+            background-color: var(--roxo-principal) !important; /* Inverte a cor de fundo */
+            color: var(--branco) !important; /* Inverte a cor do texto */
+            transform: translateY(-2px); /* Efeito de elevação sutil */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra para dar profundidade */
+        }
+
+        /* Removendo a borda padrão do botão (Se houver) */
+        .btn-cta-nav { border: none; }
+
+
+        /* === ESTILIZAÇÃO DO CARROSSEL DE CLIENTES (Problema 1: Sobreposição) === */
+        .carousel-container {
+            width: 100%;
+            overflow: hidden; 
+            margin: 30px auto;
+            padding: 10px 0;
+        }
+
+        .carousel-track {
+            display: inline-flex; 
+            white-space: nowrap; 
+        }
+
+        .carousel-item {
+            flex-shrink: 0; 
+            width: 180px; 
+            padding: 0 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100px;
+        }
+
+        /* Estilo para a LOGO dentro do item (tanto Clientes quanto Parceiros) */
+        .cliente-logo-home, .logo-item {
+            width: 100%; 
+            max-width: 100%; 
+            height: 100%;
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+        }
+        .cliente-logo-home img, .logo-item img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain; 
+            filter: grayscale(100%); 
+            opacity: 0.6;
+            transition: filter 0.3s, opacity 0.3s;
+        }
+        .cliente-logo-home img:hover, .logo-item img:hover {
+            filter: grayscale(0%); 
+            opacity: 1;
+        }
+        
+        /* === ESTILIZAÇÃO DA GRADE DE PARCEIROS (Problema 2: Layout sem colunas) === */
+        .logo-grid { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); 
+            gap: 30px; 
+            justify-items: center; 
+            align-items: center; 
+            margin-bottom: 60px; 
+        }
+        .logo-item { 
+            border: 1px solid var(--cinza-claro); 
+            border-radius: 4px; 
+            background-color: var(--branco); 
+        }
+        /* Estilo específico para Parceiros (destaque de borda) */
+        #parceiros-estrategicos .logo-item {
+            border: 2px solid var(--roxo-principal);
+            background-color: var(--branco);
+        }
+
+        /* LAYOUT DEPOIMENTOS */
+        .depoimentos-container {
+            display: grid;
+            gap: 30px; 
+            max-width: 1000px; 
+            margin: 0 auto 60px auto;
+        }
+
+        @media (min-width: 900px) {
+            .depoimentos-container {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        /* Estilo do Card de Depoimento (ORIGINAL) */
+        .depoimento-card { 
+            /* A cor cinza claro foi definida na variável --cinza-claro */
+            background-color: var(--cinza-claro); 
+            padding: 30px; 
+            border-radius: 8px; 
+            border-left: 5px solid var(--laranja-destaque); 
+        }
+        .depoimento-card p { 
+            font-style: italic; 
+            margin-bottom: 15px; 
+        }
+        .depoimento-autor { 
+            font-weight: 700; 
+            color: var(--roxo-principal); 
+        }
+
+        /* Estilo para a seção de Benefícios/Chamada à Ação */
+        .cta-section {
+            background-color: var(--roxo-principal); 
+            color: var(--branco);
+            padding: 60px 0;
+            text-align: center;
+        }
+        .cta-section h2 {
+            color: var(--laranja-destaque);
+            margin-bottom: 15px;
+        }
+        .beneficios-list {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            margin-top: 30px;
+        }
+        .beneficio-item {
+            flex-basis: 30%; 
+            margin: 15px;
+        }
+        .beneficio-item i {
+            font-size: 2.5em;
+            color: var(--laranja-destaque);
+            margin-bottom: 10px;
+        }
+        .headli {
+            font-size: 3em;
+            font-weight: 700;
+        }
+        
+        /* Aplica a variável cinza-claro à seção de Parceiros */
+        #parceiros-estrategicos {
+            background-color: var(--cinza-claro) !important;
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <img src="AGENCIA AGORA_LOGO_001.png" alt="Logo Agência Agora">
+            </div>
+            <nav class="nav" id="main-nav">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="servicos.html">Serviços</a></li>
+                    <li><a href="portfolio.html">Portfólio</a></li>
+                    <li><a href="comunidade.html" class="active">Comunidade</a></li> 
+                    <li><a href="equipe.html">Equipe</a></li>
+                    <li><a href="https://api.whatsapp.com/send?phone= (86) 98152-4100" class="btn-cta-nav">Contato</a></li>
+                </ul>
+            </nav>
+            <button class="menu-toggle" id="menu-toggle"><i class="fas fa-bars"></i></button>
+        </div>
+    </header>
+
+    <section class="section page-header" style="background-color: var(--roxo-principal); color: var(--branco); padding: 80px 0;">
+        <div class="container">
+            <h1 class="headli" style="color: var(--branco); text-align: center;">Juntos, Criamos o Futuro.</h1>
+            <p style="text-align: center; font-size: 1.2em; max-width: 800px; margin: 0 auto; margin-top: 15px;">
+                Nossa Comunidade é formada por clientes que confiam em nosso trabalho e parceiros estratégicos que potencializam nossos resultados.
+            </p>
+        </div>
+    </section>
+
+    <section id="clientes-detalhe" class="section">
+        <div class="container">
+            <h2 class="section-title"><i class="fas fa-handshake" style="color: var(--laranja-destaque); margin-right: 10px;"></i>Clientes de Destaque</h2>
+            
+            <p class="section-subtitle" style="text-align: center; margin-bottom: 40px;">Conheça algumas das empresas que impulsionamos diariamente.</p>
+
+            <div class="carousel-container">
+                <div id="logos-carousel" class="carousel-track">
+                    <div class="carousel-item">
+                        <div class="cliente-logo-home"><img src="Bello-Ambiente.png" alt="Logo Cliente 1"></div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="cliente-logo-home"><img src="Ciranda-do-Saber.png" alt="Logo Cliente 2"></div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="cliente-logo-home"><img src="Dirige-Aí.png" alt="Logo Cliente 3"></div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="cliente-logo-home"><img src="GLASS PHB.jpg" alt="Logo Cliente 4"></div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="cliente-logo-home"><img src="LOGO_FONSECA FILHO_ok.jpg" alt="Logo Cliente 5"></div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="cliente-logo-home"><img src="Mila Laços_logo.jpg" alt="Logo Cliente 1"></div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="cliente-logo-home"><img src="Natalia-britto-Psicologa.png" alt="Logo Cliente 2">
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="cliente-logo-home"><img src="Neta-Castelo-Branco.png" alt="Logo Cliente 3"></div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="cliente-logo-home"><img src="Ótica-Pryscilla.png" alt="Logo Cliente 4"></div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="cliente-logo-home"><img src="Posto-Poty.png" alt="Logo Cliente 5"></div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="cliente-logo-home"><img src="Unirim.png" alt="Logo Cliente 5"></div>
+                    </div>
+
+                    <div class="carousel-item" aria-hidden="true">
+                        <div class="cliente-logo-home"><img src="Bello-Ambiente.png" alt="Logo Cliente 1 Clone"></div>
+                    </div>
+                    <div class="carousel-item" aria-hidden="true">
+                        <div class="cliente-logo-home"><img src="Ciranda-do-Saber.png" alt="Logo Cliente 2 Clone"></div>
+                    </div>
+                    <div class="carousel-item" aria-hidden="true">
+                        <div class="cliente-logo-home"><img src="Dirige-Aí.png" alt="Logo Cliente 3 Clone"></div>
+                    </div>
+                    <div class="carousel-item" aria-hidden="true">
+                        <div class="cliente-logo-home"><img src="GLASS PHB.jpg" alt="Logo Cliente 4 Clone"></div>
+                    </div>
+                    <div class="carousel-item" aria-hidden="true">
+                        <div class="cliente-logo-home"><img src="LOGO_FONSECA FILHO_ok.jpg" alt="Logo Cliente 5 Clone"></div>
+                    </div>
+                    <div class="carousel-item" aria-hidden="true">
+                        <div class="cliente-logo-home"><img src="Mila Laços_logo.jpg" alt="Logo Cliente 1 Clone"></div>
+                    </div>
+                    <div class="carousel-item" aria-hidden="true">
+                        <div class="cliente-logo-home"><img src="Natalia-britto-Psicologa.png" alt="Logo Cliente 2 Clone">
+                        </div>
+                    </div>
+                    <div class="carousel-item" aria-hidden="true">
+                        <div class="cliente-logo-home"><img src="Neta-Castelo-Branco.png" alt="Logo Cliente 3 Clone"></div>
+                    </div>
+                    <div class="carousel-item" aria-hidden="true">
+                        <div class="cliente-logo-home"><img src="Ótica-Pryscilla.png" alt="Logo Cliente 4 Clone"></div>
+                    </div>
+                    <div class="carousel-item" aria-hidden="true">
+                        <div class="cliente-logo-home"><img src="Posto-Poty.png" alt="Logo Cliente 5 Clone"></div>
+                    </div>
+                    <div class="carousel-item" aria-hidden="true">
+                        <div class="cliente-logo-home"><img src="Unirim.png" alt="Logo Cliente 5 Clone"></div>
+                    </div>
+                    
+                    <div class="carousel-item" aria-hidden="true">
+                        <div class="cliente-logo-home"><img src="Bello-Ambiente.png" alt="Logo Cliente 1 Clone 2"></div>
+                    </div>
+                    <div class="carousel-item" aria-hidden="true">
+                        <div class="cliente-logo-home"><img src="Ciranda-do-Saber.png" alt="Logo Cliente 2 Clone 2"></div>
+                    </div>
+                    <div class="carousel-item" aria-hidden="true">
+                        <div class="cliente-logo-home"><img src="Dirige-Aí.png" alt="Logo Cliente 3 Clone 2"></div>
+                    </div>
+                    <div class="carousel-item" aria-hidden="true">
+                        <div class="cliente-logo-home"><img src="GLASS PHB.jpg" alt="Logo Cliente 4 Clone 2"></div>
+                    </div>
+                    <div class="carousel-item" aria-hidden="true">
+                        <div class="cliente-logo-home"><img src="LOGO_FONSECA FILHO_ok.jpg" alt="Logo Cliente 5 Clone 2"></div>
+                    </div>
+                    <div class="carousel-item" aria-hidden="true">
+                        <div class="cliente-logo-home"><img src="Mila Laços_logo.jpg" alt="Logo Cliente 1 Clone 2"></div>
+                    </div>
+                    <div class="carousel-item" aria-hidden="true">
+                        <div class="cliente-logo-home"><img src="Natalia-britto-Psicologa.png" alt="Logo Cliente 2 Clone 2">
+                        </div>
+                    </div>
+                    <div class="carousel-item" aria-hidden="true">
+                        <div class="cliente-logo-home"><img src="Neta-Castelo-Branco.png" alt="Logo Cliente 3 Clone 2"></div>
+                    </div>
+                    <div class="carousel-item" aria-hidden="true">
+                        <div class="cliente-logo-home"><img src="Ótica-Pryscilla.png" alt="Logo Cliente 4 Clone 2"></div>
+                    </div>
+                    <div class="carousel-item" aria-hidden="true">
+                        <div class="cliente-logo-home"><img src="Posto-Poty.png" alt="Logo Cliente 5 Clone 2"></div>
+                    </div>
+                    <div class="carousel-item" aria-hidden="true">
+                        <div class="cliente-logo-home"><img src="Unirim.png" alt="Logo Cliente 5 Clone 2"></div>
+                    </div>
+
+                </div>
+            </div>
+
+            <h2 class="section-title" style="margin-top: 60px;"><i class="fas fa-quote-left" style="color: var(--laranja-destaque); margin-right: 10px;"></i>O Que Nossos Clientes Dizem</h2>
+            
+            <div class="depoimentos-container">
+                
+                <div class="depoimento-card">
+                    <p>"A Agência Agora transformou nosso marketing. Aumentamos o tráfego orgânico em 150% em apenas 6 meses!"</p>
+                    <div class="depoimento-autor">João Silva, CEO da Tecno Solutions</div>
+                </div>
+                
+                <div class="depoimento-card">
+                    <p>"Excelente suporte e criação de conteúdo impecável. Profissionalismo e resultados garantidos."</p>
+                    <div class="depoimento-autor">Maria Oliveira, Diretora de Marketing da Moda Beta</div>
+                </div>
+                
+                <div class="depoimento-card">
+                    <p>"A equipe da Agora realmente entende de branding. Nossa nova identidade visual nos posicionou no mercado de forma incrível."</p>
+                    <div class="depoimento-autor">Ricardo Nunes, Fundador da Logística Delta</div>
+                </div>
+
+                <div class="depoimento-card">
+                    <p>"Raramente vi uma agência com tanta dedicação ao detalhe. Nosso ROI nas campanhas pagas dobrou no último trimestre."</p>
+                    <div class="depoimento-autor">Ana Costa, Gerente de Vendas da Serviços Gama</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="parceiros-estrategicos" class="section" style="background-color: var(--cinza-claro);">
+        <div class="container">
+            <h2 class="section-title"><i class="fas fa-sitemap" style="color: var(--laranja-destaque); margin-right: 10px;"></i>Parceiros Estratégicos</h2>
+            <p class="section-subtitle" style="text-align: center; margin-bottom: 40px;">Empresas que complementam nossos serviços e elevam a qualidade da entrega.</p>
+
+            <div class="logo-grid">
+                <div class="logo-item"><img src="Bello-Ambiente.png" alt="Logo Parceiro 1"></div>
+                <div class="logo-item"><img src="Neta-Castelo-Branco.png" alt="Logo Parceiro 2"></div>
+                <div class="logo-item"><img src="Natalia-britto-Psicologa.png" alt="Logo Parceiro 3"></div>
+                <div class="logo-item"><img src="Ótica-Pryscilla.png" alt="Logo Parceiro 4"></div>
+                <div class="logo-item"><img src="Posto-Poty.png" alt="Logo Parceiro 5"></div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="cta-section">
+        <div class="container">
+            <h2>Faça parte da nossa comunidade</h2>
+            <p style="font-size: 1.1em; margin-bottom: 30px;">Seja como cliente ou parceiro, estamos sempre buscando novas conexões para criar grandes projetos.</p>
+            
+            <div class="beneficios-list">
+                <div class="beneficio-item">
+                    <i class="fas fa-star"></i>
+                    <p>Clientes: Garanta resultados com estratégia de ponta.</p>
+                </div>
+                <div class="beneficio-item">
+                    <i class="fas fa-rocket"></i>
+                    <p>Parceiros: Potencialize seu negócio e alcance novos clientes.</p>
+                </div>
+                <div class="beneficio-item">
+                    <i class="fas fa-comments"></i>
+                    <p>Rede: Acesse nossa rede de contatos e oportunidades.</p>
+                </div>
+            </div>
+            
+            <a href="https://api.whatsapp.com/send?phone= (86) 98152-4100" class="btn-cta-nav" style="background-color: var(--laranja-destaque); color: var(--roxo-principal); padding: 12px 30px; border-radius: 5px; text-decoration: none; display: inline-block; margin-top: 30px; font-weight: 600;">Vamos Conversar!</a>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="containerserv">
+               <p>&copy; 2025 Agência Agora. Todos os direitos reservados. | Privacidade</p>
+        </div>
+    </footer>
+    <script src="script.js"></script>
+</body>
+</html>

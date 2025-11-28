@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Serviços Estratégicos | Agência Agora</title>
+    <link rel="icon" type="image/x-icon" href="fivicon.png">
+    
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    
+    <style>
+        :root {
+            --laranja-destaque: #ff6a00; 
+            --roxo-principal: #5e0094; 
+            --branco: #ffffff;
+            --cinza-claro: #f0f0f0;
+            --cinza-medio: #333333;
+        }
+
+        /* === ESTILIZAÇÃO DOS BOTÕES (ANIMAÇÃO ADICIONADA AQUI) === */
+        /* Estilo padrão para o botão CTA na navegação e na seção CTA */
+        .btn-cta-nav {
+            /* Transição suave para a animação */
+            transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease; 
+            border: none; /* Garante que não haja bordas inesperadas */
+        }
+
+        /* Efeito ao passar o mouse (Hover) */
+        .btn-cta-nav:hover {
+            /* Inverte as cores e adiciona um efeito de elevação */
+            background-color: var(--laranja-destaque) !important; 
+            color: var(--branco) !important; 
+            transform: translateY(-2px); 
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Ajuste no Nav para o link ativo */
+        .nav ul li a[href="servicos.html"] { color: var(--laranja-destaque); } 
+        
+        /* Estilo para a Section de Visão Geral */
+        .vision-section {
+            padding: 80px 0;
+            background-color: var(--roxo-principal);
+            color: var(--branco);
+            text-align: center;
+        }
+        .vision-section h2 {
+            color: var(--laranja-destaque);
+            margin-bottom: 20px;
+        }
+        .vision-section p {
+            max-width: 900px;
+            margin: 0 auto;
+            font-size: 1.15em;
+            line-height: 1.6;
+        }
+
+        /* Estilo para a Grade de Serviços Detalhados */
+        .servicos-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            margin-top: 40px;
+        }
+        .servico-card {
+            background-color: var(--branco);
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+            text-align: center;
+            border-top: 5px solid var(--laranja-destaque);
+            transition: transform 0.3s;
+        }
+        .servico-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+        }
+        .servico-card i {
+            font-size: 3em;
+            color: var(--roxo-principal);
+            margin-bottom: 15px;
+        }
+        .servico-card h3 {
+            color: var(--cinza-medio);
+            margin-bottom: 10px;
+        }
+        .servico-card p {
+            color: #666;
+            font-size: 0.95em;
+        }
+
+        /* Estilo para o Processo de Trabalho (Timeline) */
+        .processo-grid {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-top: 50px;
+            position: relative;
+        }
+        .processo-item {
+            flex: 1;
+            text-align: center;
+            padding: 0 15px;
+            position: relative;
+        }
+        .processo-icon-box {
+            width: 70px;
+            height: 70px;
+            background-color: var(--laranja-destaque);
+            color: var(--branco);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5em;
+            margin: 0 auto 15px auto;
+            border: 5px solid var(--branco);
+            box-shadow: 0 0 0 5px var(--roxo-principal);
+        }
+        .processo-item h4 {
+            color: white;
+            margin-bottom: 5px;
+        }
+        .processo-item p {
+            font-size: 0.9em;
+            color: white;
+        }
+        
+        /* Linha conectando os passos (apenas em desktop) */
+        @media (min-width: 768px) {
+            .processo-grid::before {
+                content: '';
+                position: absolute;
+                top: 35px; /* Alinha com o centro dos ícones */
+                left: 10%;
+                right: 10%;
+                height: 2px;
+                background-color: var(--cinza-claro);
+                z-index: -1;
+            }
+             .headli {
+            font-size: 3em;
+            font-weight: 700;
+        }
+        }
+        
+        /* Estilo para a CTA Final (Reutiliza CTA da Comunidade) */
+        .cta-servicos {
+            background-color: white;
+            color: var(--roxo-principal);
+            padding: 50px 0;
+            text-align: center;
+        }
+        .cta-servicos h2 {
+            color: var(--roxo-principal);
+            font-size: 40px;
+        }
+        .cta-servicos .btn-cta-nav {
+            background-color: var(--roxo-principal);
+            color: var(--branco);
+            margin-top: 20px;
+            /* Estilos específicos do botão CTA final para manter o visual */
+            padding: 15px 40px; 
+            border-radius: 50px; 
+            font-weight: 700;
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <img src="AGENCIA AGORA_LOGO_001.png" alt="Logo Agência Agora">
+            </div>
+            <nav class="nav" id="main-nav">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="servicos.html" class="active">Serviços</a></li>
+                    <li><a href="portfolio.html">Portfólio</a></li>
+                    <li><a href="comunidade.html">Comunidade</a></li> 
+                    <li><a href="equipe.html">Equipe</a></li>
+                    <li><a href="https://api.whatsapp.com/send?phone= (86) 98152-4100" class="btn-cta-nav">Contato</a></li>
+                </ul>
+            </nav>
+            <button class="menu-toggle" id="menu-toggle"><i class="fas fa-bars"></i></button>
+        </div>
+    </header>
+
+    <section class="section page-header" style="background-color: var(--roxo-principal); color: var(--branco); padding: 100px 0;">
+        <div class="container">
+            <h1 class="headli" style="color: var(--branco); text-align: center;"><i class="fas fa-magic" style="color: var(--laranja-destaque); margin-right: 15px;"></i>Estratégia, Criatividade e Resultados</h1>
+            <p style="text-align: center; font-size: 1.3em; max-width: 800px; margin: 0 auto; margin-top: 20px;">
+                Construímos soluções digitais completas que conectam sua marca ao público certo e geram crescimento real.
+            </p>
+        </div>
+    </section>
+    
+    <section id="visao-geral" class="section" style="background-color: var(--cinza-claro); padding: 60px 0;">
+        <div class="container" style="text-align: center;">
+            <h2 class="section-title">Nossa Abordagem</h2>
+            <p style="font-size: 1.1em; max-width: 900px; margin: 0 auto;">
+                A Agência Agora não apenas executa; nós planejamos. Transformamos objetivos de negócio em ações digitais mensuráveis, garantindo que cada investimento traga o máximo retorno.
+            </p>
+        </div>
+    </section>
+
+    <section id="servicos-principais" class="section">
+        <div class="container">
+            <h2 class="section-title" style="margin-bottom: 50px; text-align: center;">O Que Oferecemos</h2>
+            
+            <div class="servicos-grid">
+                
+                <div class="servico-card">
+                    <i class="fas fa-bullhorn"></i>
+                    <h3>Marketing Digital & Performance</h3>
+                    <p>Gestão completa de tráfego pago (Google Ads, Meta Ads), SEO e campanhas de conversão para maximizar seu alcance e vendas.</p>
+                </div>
+
+                <div class="servico-card">
+                    <i class="fas fa-pencil-ruler"></i>
+                    <h3>Branding e Identidade Visual</h3>
+                    <p>Desenvolvimento de marcas fortes, logotipos e manuais de identidade que comunicam a essência do seu negócio com clareza e impacto.</p>
+                </div>
+                
+                <div class="servico-card">
+                    <i class="fas fa-mobile-alt"></i>
+                    <h3>Gestão de Redes Sociais</h3>
+                    <p>Criação de conteúdo estratégico, acompanhamento de métricas e interação com a comunidade para construir engajamento e fidelidade.</p>
+                </div>
+                
+                <div class="servico-card">
+                    <i class="fas fa-code"></i>
+                    <h3>Desenvolvimento Web</h3>
+                    <p>Criação de websites institucionais, <br> e-commerces e landing pages otimizadas para velocidade, experiência do usuário e alta conversão.</p>
+                </div>
+                
+                <div class="servico-card">
+                    <i class="fas fa-video"></i>
+                    <h3>Produção Audiovisual</h3>
+                    <p>Criação de vídeos institucionais, reels e anúncios em formatos de alta qualidade, prontos para dominar as plataformas digitais.</p>
+                </div>
+                
+                <div class="servico-card">
+                    <i class="fas fa-chart-line"></i>
+                    <h3>Consultoria e Estratégia</h3>
+                    <p>Análise de mercado, planejamento estratégico e definição de metas claras para orientar todas as ações de marketing da sua empresa.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="nosso-processo" class="section" style="background-color: var(--roxo-principal); padding: 80px 0;">
+        <div class="container">
+            <h2 class="section-title" style="color: var(--branco); text-align: center; margin-bottom: 60px;"><i class="fas fa-cogs" style="color: var(--laranja-destaque); margin-right: 10px;"></i>Nosso Processo de Sucesso</h2>
+            
+            <div class="processo-grid">
+                
+                <div class="processo-item">
+                    <div class="processo-icon-box"><i class="fas fa-search"></i></div>
+                    <h4>1. Diagnóstico e Planejamento</h4>
+                    <p>Entendemos seu mercado, definimos seu público e criamos um plano de ação.</p>
+                </div>
+                
+                <div class="processo-item">
+                    <div class="processo-icon-box"><i class="fas fa-drafting-compass"></i></div>
+                    <h4>2. Criação e Desenvolvimento</h4>
+                    <p>Colocamos a estratégia em ação, desenvolvendo criativos e plataformas.</p>
+                </div>
+                
+                <div class="processo-item">
+                    <div class="processo-icon-box"><i class="fas fa-paper-plane"></i></div>
+                    <h4>3. Lançamento e Execução</h4>
+                    <p>Tiramos o projeto do papel, lançamos campanhas e gerenciamos o posicionamento do negócio.</p>
+                </div>
+                
+                <div class="processo-item">
+                    <div class="processo-icon-box"><i class="fas fa-chart-bar"></i></div>
+                    <h4>4. Análise e Otimização</h4>
+                    <p>Monitoramos KPIs, geramos relatórios e ajustamos a rota para garantir o ROI.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta-servicos">
+        <div class="container">
+            <h2>Pronto para levar seu negócio ao próximo nível?</h2>
+            <p style="font-size: 1.1em; margin-bottom: 30px;">Fale com nosso time de especialistas e descubra a estratégia ideal para o seu crescimento.</p>
+            
+            <a href="https://api.whatsapp.com/send?phone= (86) 98152-4100" class="btn-cta-nav" style="padding: 15px 40px; border-radius: 50px; text-decoration: none; display: inline-block; font-weight: 700;">Solicitar Proposta Agora</a>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="containerserv">
+               <p>&copy; 2025 Agência Agora. Todos os direitos reservados. | Privacidade</p>
+        </div>
+    </footer>
+    <script src="script.js"></script>
+</body>
+</html>

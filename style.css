@@ -1,0 +1,909 @@
+/* ======================================================= */
+/* 0. IMPORTAÇÃO DA FONTE (Google Fonts) */
+/* Referência da Fonte: Poppins */
+/* Coloque esta importação no topo do seu arquivo CSS */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+
+/* Definição das Cores Base */
+:root {
+    --roxo-principal: #5e0094;
+    --roxo-secundario: #8A2BE2;
+    --laranja-destaque: #ff6a00;
+    --branco: #ffffff;
+    --preto: #1a1a1a;
+    --cinza-claro: #f4f4f4;
+    --cinza-texto: #555555;
+}
+
+/* Reset Básico */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Aplicação da Fonte Poppins no corpo */
+body {
+    font-family: 'Poppins', sans-serif;
+    line-height: 1.6;
+    color: var(--cinza-texto);
+    background-color: var(--branco);
+}
+
+.headline {
+    font-weight: 200;
+    font-size: 40px;
+    
+}
+
+.header {
+    background-color: #820B99;
+}
+
+
+/* Utilitários */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.container img {
+    width: 300px;
+}
+
+
+/* Tipografia */
+h1,
+h2,
+h3 {
+    font-weight: 700;
+    margin-bottom: 0.5em;
+    color: var(--roxo-principal);
+    font-family: 'Poppins', sans-serif; 
+}
+
+.section {
+    padding: 80px 0;
+}
+
+.section-title {
+    text-align: center;
+    font-size: 2.5em;
+    margin-bottom: 0.3em;
+}
+
+.section-title.white {
+    color: var(--branco);
+}
+
+.section-subtitle {
+    text-align: center;
+    max-width: 700px;
+    margin: 0 auto 50px;
+    font-size: 1.1em;
+    color: var(--cinza-texto);
+}
+
+.section.processo .section-subtitle {
+    color: var(--cinza-claro);
+}
+
+/* Estilo para palavras com a classe .bold (para destaque) */
+.bold {
+    font-weight: bold; /* Ajustei para 600, pois 700/900 pode estar em h3/h2 */
+    color: white;
+}
+
+
+/* Botões (Chamadas para Ação) */
+.btn-cta {
+    display: inline-block;
+    padding: 12px 30px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+    text-align: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.btn-cta.primary {
+    background-color: var(--laranja-destaque);
+    color: var(--branco);
+    border: 2px solid var(--laranja-destaque);
+}
+
+.btn-cta.primary:hover {
+    background-color: var(--roxo-principal);
+    border-color: var(--roxo-principal);
+}
+
+.btn-cta.secondary {
+    background-color: transparent;
+    color: var(--roxo-principal);
+    border: 2px solid var(--roxo-principal);
+    box-shadow: none;
+}
+
+.btn-cta.secondary:hover {
+    background-color: var(--roxo-principal);
+    color: var(--branco);
+}
+
+.btn-cta-nav {
+    padding: 8px 20px !important;
+    background-color: var(--laranja-destaque);
+    color: var(--branco) !important;
+    border-radius: 4px;
+    margin-left: 10px;
+    box-shadow: none;
+}
+
+.btn-cta-nav:hover {
+    background-color: var(--roxo-principal);
+}
+
+
+/* 1. Cabeçalho/Navegação */
+.header {
+    background-color: #820B99;
+    padding: 15px 0;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo img {
+    width: 300px;
+}
+
+.nav ul {
+    list-style: none;
+    display: flex;
+    align-items: center;
+}
+
+.nav ul li a {
+    text-decoration: none;
+    color: white;
+    font-weight: 600;
+    padding: 10px 15px;
+    display: block;
+    transition: color 0.3s;
+}
+
+.nav ul li a:hover,
+.nav ul li a.active {
+    color: var(--laranja-destaque);
+}
+
+.menu-toggle {
+    display: none;
+    background: none;
+    border: none;
+    font-size: 1.5em;
+    cursor: pointer;
+    color: var(--roxo-principal);
+}
+
+/* 2. Seção Hero */
+.hero {
+    background-color: var(--roxo-principal);
+    color: var(--branco);
+    padding: 100px 0;
+    text-align: left;
+    min-height: 80vh;
+    display: flex;
+    align-items: center;
+    background-image: linear-gradient(135deg, rgba(255, 106, 0, 0.1) 0%, transparent 50%), var(--roxo-principal);
+    background-repeat: no-repeat;
+    background-position: top right;
+}
+
+.hero-content {
+    max-width: 600px;
+}
+
+.headline {
+    font-size: 3.3em;
+    margin-bottom: 20px;
+    color: var(--branco);
+    line-height: 1.1;
+}
+
+.subhead {
+    font-size: 1.3em;
+    margin-bottom: 30px;
+    opacity: 0.9;
+}
+
+
+/* 3. Seção Vantagens/Diferenciais (ESTILO BONITINHO) */
+.vantagens {
+    background-color: var(--branco);
+}
+
+.vantagens-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+    text-align: center;
+}
+
+.vantagem-item {
+    padding: 40px 20px;
+    background-color: var(--cinza-claro);
+    border-radius: 10px;
+    transition: transform 0.3s, box-shadow 0.3s, background-color 0.3s;
+    border-bottom: 4px solid var(--laranja-destaque);
+}
+
+.vantagem-item:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+    background-color: var(--branco);
+}
+
+.vantagem-item .icon {
+    font-size: 3.5em;
+    color: var(--roxo-principal);
+    margin-bottom: 15px;
+    transition: color 0.3s;
+}
+
+.vantagem-item:hover .icon {
+    color: var(--laranja-destaque);
+}
+
+.vantagem-item h3 {
+    color: var(--roxo-principal);
+}
+
+/* 4. Seção de Serviços */
+.servicos {
+    background-color: var(--cinza-claro);
+    text-align: center;
+}
+
+.servicos-grid {
+    display: flex;
+    gap: 30px;
+    justify-content: center;
+    margin-bottom: 40px;
+}
+
+.servico-card {
+    background-color: var(--branco);
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+    flex: 1;
+    max-width: 350px;
+    text-align: center;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.servico-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+.servico-card .icon {
+    font-size: 3em;
+    color: var(--laranja-destaque);
+    margin-bottom: 15px;
+}
+
+.servico-card h3 {
+    color: var(--roxo-principal);
+    margin-top: 0;
+}
+
+
+/* 5. Seção Processo (ESTILO BONITINHO) */
+.processo {
+    background-color: var(--roxo-principal);
+    color: var(--branco);
+}
+
+.processo .section-title {
+    color: var(--branco);
+}
+
+.processo-grid-wrapper {
+    max-width: 900px;
+    margin: 0 auto;
+    border-left: 2px solid var(--laranja-destaque);
+    /* Linha vertical */
+    padding-left: 20px;
+}
+
+.processo-step {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 40px;
+    position: relative;
+}
+
+.processo-num-container {
+    margin-left: -42px;
+    /* Puxa o número para fora da linha */
+    position: relative;
+    z-index: 10;
+    min-width: 50px;
+}
+
+.processo-num {
+    font-size: 1.2em;
+    font-weight: 700;
+    color: var(--branco);
+    background-color: var(--laranja-destaque);
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 3px solid var(--roxo-principal);
+    box-shadow: 0 0 0 5px var(--roxo-principal);
+}
+
+.processo-info {
+    margin-left: 20px;
+    padding-bottom: 15px;
+    padding-top: 5px;
+}
+
+.processo-info h3 {
+    color: var(--branco);
+    margin-top: 0;
+}
+
+.processo-info p {
+    color: var(--cinza-claro);
+}
+
+.processo-cta {
+    text-align: center;
+    margin-top: 50px;
+}
+
+
+/* 6. Seção Portfólio (Chamada) */
+.portfolio-cta {
+    background-color: #820B99;
+    color: var(--branco);
+    text-align: center;
+    padding: 60px 0;
+}
+
+.portfolio-cta p {
+    font-size: 1.1em;
+    margin-bottom: 30px;
+}
+
+/* 7. Seção Clientes e Parceiros (na Home) */
+.clientes-home {
+    text-align: center;
+    background-color: var(--branco);
+}
+
+.client-partner-subtitle {
+    color: var(--roxo-principal);
+    margin-top: 40px;
+    font-size: 1.5em;
+}
+
+.clientes-home-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 30px;
+    justify-items: center;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.cliente-logo-home {
+    width: 100%;
+    max-width: 150px;
+    height: 80px;
+    background-color: var(--cinza-claro);
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+    color: #999;
+    opacity: 0.6;
+    transition: opacity 0.3s;
+}
+
+.cliente-logo-home:hover {
+    opacity: 1;
+}
+
+.clients-cta {
+    margin-top: 50px;
+}
+
+/* 8. Seção Contato (Formulário) */
+.contato-form {
+    background-color: var(--cinza-claro);
+}
+
+.contato-form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.contato-form-grid input,
+.contato-form-grid select,
+.contato-form-grid textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-family: inherit;
+    font-size: 1em;
+}
+
+.contato-form-grid textarea {
+    grid-column: 1 / 3;
+    resize: vertical;
+    min-height: 150px;
+}
+
+.submit-btn {
+    grid-column: 1 / 3;
+    width: 100%;
+    border: none !important;
+    cursor: pointer;
+}
+
+
+/* 9. RODAPÉ COMPLETO E PROFISSIONAL */
+.footer {
+    background-color: #820B99;
+    color: #ffffff;
+    padding: 50px 0 0;
+}
+
+.footer a {
+    color: white;
+}
+
+.footer img {
+    width: 300px;
+}
+
+.footer .containerserv {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50px;
+    background-color: #820B99;
+}
+.footer .contact-item{
+    font-size: 15px;
+}
+
+.footer-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1.5fr 1.5fr; /* 4 colunas mais equilibradas: Logo, Links, Contato, CTA */
+    gap: 40px;
+    padding-bottom: 40px;
+}
+
+.footer-col h3 {
+    font-size: 1.2em;
+    color: var(--branco);
+    margin-bottom: 20px;
+}
+
+.footer-col ul {
+    list-style: none;
+}
+
+.footer-col ul li a {
+    color: #ffffff;
+    text-decoration: none;
+    line-height: 2.2;
+    transition: color 0.3s;
+}
+
+.footer-col ul li a:hover {
+    color: var(--laranja-destaque);
+}
+
+.footer-info p {
+    margin-bottom: 20px;
+    font-size: 0.9em;
+}
+
+.footer-col p i {
+    margin-right: 10px;
+    color: var(--laranja-destaque);
+    /* Cor de destaque para ícones de contato */
+}
+
+.footer-col.footer-cta-contact h3 {
+    margin-bottom: 10px;
+}
+
+.footer-col.footer-cta-contact p {
+    margin-bottom: 20px;
+    font-size: 0.9em;
+}
+
+.footer-cta-btn {
+    width: 100%;
+    /* Reutiliza o estilo .btn-cta.primary, apenas ajustando o padding se necessário */
+}
+.newsletter-btn:hover {
+    background-color: var(--roxo-principal);
+}
+
+.footer-bottom {
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 15px 0;
+    text-align: center;
+    font-size: 0.8em;
+}
+
+/* ------------------------------------ */
+/* Media Queries (Responsividade) */
+/* ------------------------------------ */
+
+@media (max-width: 900px) {
+    .servicos-grid {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .servico-card {
+        max-width: 80%;
+    }
+
+    .footer-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media (max-width: 768px) {
+    .header .container {
+        flex-wrap: wrap;
+    }
+
+    .nav {
+        display: none;
+    }
+
+    .vantagens-grid,
+    .contato-form-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .contato-form-grid input,
+    .contato-form-grid select,
+    .contato-form-grid textarea,
+    .submit-btn {
+        grid-column: 1 / 2;
+    }
+
+    .hero {
+        padding: 60px 0;
+        text-align: left; /* Mantido left para consistência com o alinhamento do título */
+    }
+
+    .headline {
+        font-size: 2.5em;
+    }
+
+    .processo-grid-wrapper {
+        border-left: none;
+        padding-left: 0;
+    }
+
+    .processo-num-container {
+        margin-left: 0;
+        min-width: 40px;
+    }
+
+    .processo-step {
+        align-items: flex-start;
+        border-left: 2px solid var(--laranja-destaque);
+        padding-left: 15px;
+    }
+
+    .processo-num {
+        margin-left: -27px;
+    }
+
+    .footer-grid {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+
+    .footer-col ul {
+        padding: 0;
+    }
+}
+
+/* Estilos de Manutenção do Carrossel (Mantidos para funcionalidade) */
+.carousel-container {
+    overflow: hidden; 
+    width: 100%;
+    margin: 60px auto 0; 
+    min-height: 300px; 
+}
+
+.carousel-track {
+    display: flex; 
+    white-space: nowrap; 
+    padding: 0;
+    margin: 0; 
+    align-items: center; 
+    animation: none; 
+}
+
+.carousel-item {
+    flex-shrink: 0;
+    width: 33.33%; 
+    padding: 15px; 
+    box-sizing: border-box; 
+    margin: 0; 
+    text-align: center;
+}
+
+.cliente-logo-home {
+    width: 100%; 
+    padding-bottom: 100%; 
+    position: relative; 
+    height: 0; 
+    background-color: transparent; 
+    border-radius: 8px; 
+    display: flex; 
+    align-items: center;
+    justify-content: center;
+    opacity: 1; 
+    transition: opacity 0.3s; 
+}
+
+.cliente-logo-home img {
+    position: absolute; 
+    top: 0;
+    left: 0;
+    width: 100%; 
+    height: 100%; 
+    object-fit: contain;
+    padding: 0; 
+    box-sizing: border-box; 
+    filter: none; 
+}
+
+@media (max-width: 1200px) {
+    .carousel-item {
+        width: 25%; 
+    }
+}
+
+@media (max-width: 768px) {
+    .carousel-item {
+        width: 33.33%; 
+    }
+}
+
+@media (max-width: 500px) {
+    .carousel-item {
+        width: 50%; 
+    }
+}
+
+.footer-col.footer-info img {
+    max-width: 250px;
+    height: auto;
+    margin-bottom: 15px;
+}
+
+.contact-details p {
+    margin-bottom: 10px;
+    line-height: 1.4;
+}
+
+.contact-details p i {
+    font-size: 0.9em;
+    position: relative;
+    top: 1px;
+}
+/* ======================================================= */
+/* NOVOS ESTILOS: MISSÃO, VISÃO, VALORES (MVV) E SOBRE NÓS */
+/* ======================================================= */
+
+/* --- Missão, Visão, Valores (MVV) --- */
+.mvv-section {
+    background-color: var(--cinza-claro); /* Assumindo --cinza-claro como cor de fundo */
+    padding: 80px 0;
+}
+
+.mvv-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    margin-top: 40px;
+}
+
+.mvv-card {
+    background-color: var(--branco);
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+    text-align: center;
+    transition: transform 0.3s;
+}
+
+.mvv-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+.mvv-card .icon {
+    color: var(--laranja-destaque);
+    font-size: 2.5em;
+    margin-bottom: 15px;
+}
+
+.mvv-card h3 {
+    color: var(--roxo-principal);
+    margin-bottom: 10px;
+}
+
+.mvv-card p {
+    font-size: 0.95em;
+    color: #666;
+}
+
+/* --- Sobre Nós --- */
+.sobre-nos-section {
+    padding: 80px 0;
+}
+
+.sobre-nos-content {
+    display: flex;
+    gap: 40px;
+    align-items: center;
+}
+
+.sobre-nos-text {
+    flex: 1;
+}
+
+.sobre-nos-text p {
+    margin-bottom: 20px;
+    font-size: 1.05em;
+    line-height: 1.8;
+}
+
+.sobre-nos-gallery {
+    flex: 1;
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Duas colunas para imagens */
+    gap: 15px;
+}
+
+.gallery-img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    object-fit: cover;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.sobre-nos-gallery .main-img {
+    grid-column: 1 / 3; /* Imagem principal ocupa duas colunas em desktop */
+    height: 350px; 
+}
+
+.sobre-nos-gallery .secondary-img {
+    grid-column: 1 / 2;
+    height: 150px;
+}
+.sobre-nos-gallery .secondary-img + .secondary-img {
+    grid-column: 2 / 3;
+}
+
+
+/* Responsividade para Sobre Nós */
+@media (max-width: 992px) {
+    .sobre-nos-content {
+        flex-direction: column; /* Pilha em telas menores */
+    }
+    
+    .sobre-nos-gallery {
+        margin-top: 30px;
+    }
+
+    .sobre-nos-gallery .main-img {
+        grid-column: 1 / 3;
+        height: 250px;
+    }
+    .sobre-nos-gallery .secondary-img {
+        display: none; /* Oculta a segunda imagem em mobile para dar foco à principal */
+    }
+}
+.sobre-nos-area {
+    padding: 100px 0;
+}
+
+.sobre-nos-content {
+    display: flex;
+    gap: 50px; /* Espaçamento entre o texto e a galeria */
+    align-items: center; /* Alinha o conteúdo verticalmente */
+}
+
+.sobre-nos-text {
+    flex: 1; /* Ocupa uma parte igual ou maior da área */
+    max-width: 50%;
+}
+
+.sobre-nos-text p {
+    margin-bottom: 20px;
+    font-size: 1.05em;
+    line-height: 1.8;
+    color: #444; /* Cor de texto mais suave */
+}
+
+/* --- Estilo da Galeria de Imagens (4 imagens em 2x2) --- */
+.sobre-nos-gallery {
+    flex: 1;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* 2 colunas de tamanho igual */
+    gap: 15px; /* Espaçamento entre as imagens */
+    max-width: 50%;
+}
+
+.sobre-nos-gallery .gallery-img {
+    width: 100%;
+    height: 250px; /* Altura fixa para alinhar em grid */
+    object-fit: cover; /* Garante que a imagem preencha o espaço sem distorcer */
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.sobre-nos-gallery .gallery-img:hover {
+    transform: scale(1.05); /* Efeito sutil ao passar o mouse */
+    z-index: 10;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+}
+
+/* --- Responsividade para Mobile/Tablet (Quebra o layout para empilhar) --- */
+@media (max-width: 992px) {
+    .sobre-nos-content {
+        flex-direction: column; /* Empilha o texto e a galeria */
+    }
+
+    .sobre-nos-text,
+    .sobre-nos-gallery {
+        max-width: 100%;
+        flex: none; /* Desativa o flex-grow */
+    }
+    
+    .sobre-nos-gallery {
+        margin-top: 30px;
+    }
+
+    .sobre-nos-gallery .gallery-img {
+        height: 180px; /* Altura menor em dispositivos móveis */
+    }
+}

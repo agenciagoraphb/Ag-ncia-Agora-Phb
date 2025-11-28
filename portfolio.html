@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfólio de Sucesso | Agência Agora</title>
+    <link rel="icon" type="image/x-icon" href="fivicon.png">
+    
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    
+    <style>
+        :root {
+            --laranja-destaque: #ff6a00; 
+            --roxo-principal: #5e0094; 
+            --branco: #ffffff;
+            --cinza-claro: #f0f0f0;
+            --cinza-medio: #333333;
+        }
+
+        /* === ESTILIZAÇÃO DOS BOTÕES (ANIMAÇÃO ADICIONADA AQUI) === */
+        /* Estilo padrão para o botão CTA na navegação e na seção CTA */
+        .btn-cta-nav {
+            /* Transição suave para a animação */
+            transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease; 
+            border: none;
+        }
+
+        /* Efeito ao passar o mouse (Hover) */
+        .btn-cta-nav:hover {
+            /* Inverte as cores (usando o estilo da página de Serviços como base) */
+            background-color: var(--roxo-principal) !important; 
+            color: var(--branco) !important; 
+            transform: translateY(-2px); 
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        }
+        /* Garantindo o hover específico para o botão no CTA final */
+        .cta-portfolio .btn-cta-nav:hover {
+            background-color: var(--roxo-principal) !important;
+            color: var(--branco) !important;
+        }
+
+        /* Ajuste no Nav para o link ativo */
+        .nav ul li a[href="portfolio.html"] { color: var(--laranja-destaque); } 
+        
+        /* === Seção de Filtros === */
+        .filtros-container {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        .filtro-btn {
+            background-color: var(--cinza-claro);
+            color: var(--cinza-medio);
+            border: none;
+            padding: 10px 20px;
+            margin: 5px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: background-color 0.3s, color 0.3s;
+        }
+        .filtro-btn:hover, .filtro-btn.active {
+            background-color: var(--roxo-principal);
+            color: var(--branco);
+        }
+
+        /* === Galeria de Projetos (Grid) === */
+        .projetos-galeria {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+        }
+        .projeto-card {
+            background-color: var(--branco);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            position: relative;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .projeto-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+        }
+        
+        /* Imagem do Projeto (substitua por suas imagens reais) */
+        .projeto-card img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+        }
+
+        .projeto-info {
+            padding: 20px;
+        }
+        .projeto-info h3 {
+            color: var(--roxo-principal);
+            margin-bottom: 5px;
+        }
+        .projeto-info p {
+            color: #777;
+            font-size: 0.9em;
+            margin-bottom: 15px;
+        }
+        .projeto-info .tag {
+            display: inline-block;
+            background-color: var(--laranja-destaque);
+            color: var(--branco);
+            font-size: 0.75em;
+            padding: 3px 8px;
+            border-radius: 3px;
+            font-weight: 600;
+        }
+        
+        /* CTA Final (Reutiliza estilo da Comunidade, mas com cor de fundo diferente) */
+        .cta-portfolio {
+            background-color: var(--roxo-principal);
+            color: var(--branco);
+            padding: 50px 0;
+            text-align: center;
+        }
+        .cta-portfolio h2 {
+            color: var(--laranja-destaque);
+        }
+        .cta-portfolio .btn-cta-nav {
+            background-color: var(--laranja-destaque);
+            color: var(--roxo-principal);
+            margin-top: 20px;
+            padding: 15px 40px; 
+            border-radius: 50px;
+            font-weight: 700;
+        }
+            .headli {
+            font-size: 3em;
+            font-weight: 700;
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <img src="AGENCIA AGORA_LOGO_001.png" alt="Logo Agência Agora">
+            </div>
+            <nav class="nav" id="main-nav">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="servicos.html">Serviços</a></li>
+                    <li><a href="portfolio.html" class="active">Portfólio</a></li>
+                    <li><a href="comunidade.html">Comunidade</a></li> 
+                    <li><a href="equipe.html">Equipe</a></li>
+                    <li><a href="https://api.whatsapp.com/send?phone= (86) 98152-4100" class="btn-cta-nav">Contato</a></li>
+                </ul>
+            </nav>
+            <button class="menu-toggle" id="menu-toggle"><i class="fas fa-bars"></i></button>
+        </div>
+    </header>
+
+    <section class="section page-header" style="background-color: var(--roxo-principal); color: var(--branco); padding: 100px 0;">
+        <div class="container">
+            <h1 class="headli" style="color: var(--branco); text-align: center;"><i class="fas fa-trophy" style="color: var(--laranja-destaque); margin-right: 15px;"></i>Nosso Legado de Resultados Comprovados</h1>
+            <p style="text-align: center; font-size: 1.3em; max-width: 800px; margin: 0 auto; margin-top: 20px;">
+                Veja como transformamos objetivos de negócio em histórias de sucesso tangíveis para nossos clientes.
+            </p>
+        </div>
+    </section>
+    
+    <section id="galeria-portfolio" class="section">
+        <div class="container">
+            <h2 class="section-title" style="text-align: center; margin-bottom: 30px;">Projetos em Destaque</h2>
+            
+            <div class="filtros-container">
+                <button class="filtro-btn active" data-filter="all">Todos os Projetos</button>
+                <button class="filtro-btn" data-filter="marketing">Marketing Digital</button>
+                <button class="filtro-btn" data-filter="branding">Branding & Design</button>
+                <button class="filtro-btn" data-filter="web">Desenvolvimento Web</button>
+                <button class="filtro-btn" data-filter="social">Mídias Sociais</button>
+            </div>
+
+            <div class="projetos-galeria">
+                
+                <div class="projeto-card" data-category="marketing">
+                    <img src="port1.png" alt="Campanha de Tráfego Pago">
+                    <div class="projeto-info">
+                        <h3>TechSolutions - Geração de Leads</h3>
+                        <p>Aumento de 80% na taxa de conversão de landing pages com foco em Meta Ads.</p>
+                        <span class="tag">Marketing Digital</span>
+                    </div>
+                </div>
+
+                <div class="projeto-card" data-category="branding">
+                    <img src="port2.png" alt="Nova Identidade Visual">
+                    <div class="projeto-info">
+                        <h3>Moda Beta - Rebranding Completo</h3>
+                        <p>Desenvolvimento de uma nova identidade visual moderna, aumentando o valor percebido da marca.</p>
+                        <span class="tag">Branding</span>
+                    </div>
+                </div>
+                
+                <div class="projeto-card" data-category="web">
+                    <img src="port3.png" alt="Website E-commerce">
+                    <div class="projeto-info">
+                        <h3>Eletro Delta - E-commerce de Alta Performance</h3>
+                        <p>Criação de e-commerce rápido e responsivo, reduzindo a taxa de abandono do carrinho em 30%.</p>
+                        <span class="tag">Web/E-commerce</span>
+                    </div>
+                </div>
+
+                <div class="projeto-card" data-category="social">
+                    <img src="port4.png" alt="Estratégia de Conteúdo">
+                    <div class="projeto-info">
+                        <h3>Gastronomia Gourmet - Engajamento Social</h3>
+                        <p>Estratégia de conteúdo focada em Reels, resultando em um crescimento de 15k seguidores orgânicos.</p>
+                        <span class="tag">Mídias Sociais</span>
+                    </div>
+                </div>
+                
+                <div class="projeto-card" data-category="marketing">
+                    <img src="port5.png" alt="Otimização SEO">
+                    <div class="projeto-info">
+                        <h3>Saúde Plena - Otimização SEO</h3>
+                        <p>Otimização de blog e artigos, alcançando a primeira página do Google para 5 palavras-chave estratégicas.</p>
+                        <span class="tag">Marketing Digital</span>
+                    </div>
+                </div>
+                
+                <div class="projeto-card" data-category="branding web">
+                    <img src="port6.png" alt="Landing Page">
+                    <div class="projeto-info">
+                        <h3>Educacional Sigma - Landing Page de Lançamento</h3>
+                        <p>Criação de Landing Page com design limpo e copywriting focado, gerando 25% mais cadastros.</p>
+                        <span class="tag">Branding</span>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section class="cta-portfolio">
+        <div class="container">
+            <h2>Quer um Case de Sucesso como Estes?</h2>
+            <p style="font-size: 1.1em; margin-bottom: 30px;">Nosso próximo projeto de destaque pode ser o seu. Conte-nos seus desafios!</p>
+            
+            <a href="https://api.whatsapp.com/send?phone= (86) 98152-4100" class="btn-cta-nav" style="text-decoration: none; display: inline-block;">Fale com Nossos Estrategistas</a>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="containerserv">
+               <p>&copy; 2025 Agência Agora. Todos os direitos reservados. | Privacidade</p>
+        </div>
+    </footer>
+    <script src="script.js"></script>
+    <script>
+        // NOTE: Este é o JavaScript necessário para fazer os filtros funcionarem.
+        document.addEventListener('DOMContentLoaded', function() {
+            const filterBtns = document.querySelectorAll('.filtro-btn');
+            const projectCards = document.querySelectorAll('.projeto-card');
+
+            filterBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    // Remove active de todos e adiciona no clicado
+                    filterBtns.forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
+
+                    const filterValue = btn.getAttribute('data-filter');
+
+                    projectCards.forEach(card => {
+                        const cardCategory = card.getAttribute('data-category');
+                        
+                        if (filterValue === 'all' || cardCategory.includes(filterValue)) {
+                            card.style.display = 'block'; // Mostra o card
+                        } else {
+                            card.style.display = 'none'; // Esconde o card
+                        }
+                    });
+                });
+            });
+        });
+    </script>
+</body>
+</html>
